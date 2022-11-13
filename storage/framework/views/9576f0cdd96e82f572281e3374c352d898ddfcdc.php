@@ -1,31 +1,31 @@
-@extends('layouts.app')
 
-@section('template_title')
+
+<?php $__env->startSection('template_title'); ?>
     Asistencia
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
 
-                @includeif('partials.errors')
+                <?php if ($__env->exists('partials.errors')) echo $__env->make('partials.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                 <div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">Asistencia</span>
                     </div>
                     <div class="card-body">
-                        @if ($message = Session::get('success'))
+                        <?php if($message = Session::get('success')): ?>
                             <div class="alert alert-success">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                        @endif
-                        @if ($message = Session::get('danger'))
+                        <?php endif; ?>
+                        <?php if($message = Session::get('danger')): ?>
                             <div class="alert alert-danger">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                        @endif
+                        <?php endif; ?>
                             <div class="box box-info padding-1">
                                 <div class="box-body">
                                     <div class="row">
@@ -68,43 +68,60 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <form method="POST" action="{{ route('asistenciaAdmin') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('asistenciaAdmin')); ?>"  role="form" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
 
                             <h1 class="text-danger">&#9312; Entrada</h1>
                             <div class="form-group">
-                                {!! Form::label('Personal') !!}
-                                {!! Form::select('personal_id[]',$personal,(isset($asistencia->personal_id))? $asistencia->personal_id:null, ['multiple', 'size'=>'4','class' => 'form-select form-select','id'=>'personal_id',($accion=='insertar')? '':'disabled']) !!}
+                                <?php echo Form::label('Personal'); ?>
+
+                                <?php echo Form::select('personal_id[]',$personal,(isset($asistencia->personal_id))? $asistencia->personal_id:null, ['multiple', 'size'=>'4','class' => 'form-select form-select','id'=>'personal_id',($accion=='insertar')? '':'disabled']); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('lugar_de_trabajo') }}
-                                {!! Form::select('lugartrabajo_id',$lugartrabajo,($asistencia->lugartrabajo_id)? $asistencia->lugartrabajo_id:null, ['class' => 'form-select','id'=>'lugartrabajo_id',($accion=='insertar')? '':'disabled']) !!}
+                                <?php echo e(Form::label('lugar_de_trabajo')); ?>
+
+                                <?php echo Form::select('lugartrabajo_id',$lugartrabajo,($asistencia->lugartrabajo_id)? $asistencia->lugartrabajo_id:null, ['class' => 'form-select','id'=>'lugartrabajo_id',($accion=='insertar')? '':'disabled']); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('fecha_asitencia') }}
-                                {{ Form::date('fecha_asitencia', ($asistencia->fecha_asitencia)? $asistencia->fecha_asitencia:date('Y-m-d'), [($accion=='insertar')? 'readonly':'disabled','class' => 'form-control' . ($errors->has('fecha_asitencia') ? ' is-invalid' : ''), 'placeholder' => '...']) }}
-                                {!! $errors->first('fecha_asitencia', '<div class="invalid-feedback">:message</div>') !!}
+                                <?php echo e(Form::label('fecha_asitencia')); ?>
+
+                                <?php echo e(Form::date('fecha_asitencia', ($asistencia->fecha_asitencia)? $asistencia->fecha_asitencia:date('Y-m-d'), [($accion=='insertar')? 'readonly':'disabled','class' => 'form-control' . ($errors->has('fecha_asitencia') ? ' is-invalid' : ''), 'placeholder' => '...'])); ?>
+
+                                <?php echo $errors->first('fecha_asitencia', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('hora_entrada') }}
-                                {{ Form::time('hora_entrada', $asistencia->hora_entrada, ['id'=>'hora_entrada','class' => 'form-control' . ($errors->has('hora_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Hora Entrada']) }}
-                                {!! $errors->first('hora_entrada', '<div class="invalid-feedback">:message</div>') !!}
+                                <?php echo e(Form::label('hora_entrada')); ?>
+
+                                <?php echo e(Form::time('hora_entrada', $asistencia->hora_entrada, ['id'=>'hora_entrada','class' => 'form-control' . ($errors->has('hora_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Hora Entrada'])); ?>
+
+                                <?php echo $errors->first('hora_entrada', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('lat_entrada') }}
-                                {{ Form::text('lat_entrada', $asistencia->lat_entrada, ['id'=>'lat_entrada','class' => 'form-control' . ($errors->has('lat_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Lat Entrada',($accion=='insertar')? '':'disabled']) }}
-                                {!! $errors->first('lat_entrada', '<div class="invalid-feedback">:message</div>') !!}
-                                <input id="choose" name="i_like" required>
+                                <?php echo e(Form::label('lat_entrada')); ?>
+
+                                <?php echo e(Form::text('lat_entrada', $asistencia->lat_salida, ['id'=>'lat_entrada','class' => 'form-control' . ($errors->has('lat_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Lat Salida'])); ?>
+
+                                <?php echo $errors->first('lat_entrada', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('long_entrada') }}
-                                {{ Form::text('long_entrada', $asistencia->long_entrada, ['id'=>'long_entrada','class' => 'form-control' . ($errors->has('long_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Long Entrada',($accion=='insertar')? '':'disabled']) }}
-                                {!! $errors->first('long_entrada', '<div class="invalid-feedback">:message</div>') !!}
-                                <input id="choose" name="i_like" required>
+                                <?php echo e(Form::label('long_entrada')); ?>
+
+                                <?php echo e(Form::text('long_entrada', $asistencia->long_salida, ['id'=>'long_entrada','class' => 'form-control' . ($errors->has('long_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Long Salida'])); ?>
+
+                                <?php echo $errors->first('long_entrada', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
+                          
                             <div class="form-group">
-                                {{ Form::hidden('estado_entrada', ($asistencia->estado_entrada)? $asistencia->estado_entrada:'Sin_marcar', [($accion=='insertar')? 'readonly':'disabled','class' => 'form-control bg-danger text-white' . ($errors->has('estado_entrada') ? ' is-invalid' : ''), 'placeholder' => '...']) }}
-                                {!! $errors->first('estado_entrada', '<div class="invalid-feedback">:message</div>') !!}
+                                <?php echo e(Form::hidden('estado_entrada', ($asistencia->estado_entrada)? $asistencia->estado_entrada:'Sin_marcar', [($accion=='insertar')? 'readonly':'disabled','class' => 'form-control bg-danger text-white' . ($errors->has('estado_entrada') ? ' is-invalid' : ''), 'placeholder' => '...'])); ?>
+
+                                <?php echo $errors->first('estado_entrada', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="col-md-12 mt-3">
                                 <button type="submit" class="btn btn-primary" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Marcar entrada</button>
@@ -127,27 +144,38 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <form method="POST" action="{{ route('edit_asistenciaAdmin') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('edit_asistenciaAdmin')); ?>"  role="form" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <h1 class="text-danger">&#9313; Salida</h1>
                             <div class="form-group">
-                                {!! Form::label('Personal') !!}
-                                {!! Form::select('personal_id_salida[]',$personal_salida,null, [ 'size'=>'8','multiple','class' => 'form-select form-select']) !!}
+                                <?php echo Form::label('Personal'); ?>
+
+                                <?php echo Form::select('personal_id_salida[]',$personal_salida,null, [ 'size'=>'8','multiple','class' => 'form-select form-select']); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('hora_salida') }}
-                                {{ Form::time('hora_salida', $asistencia->hora_salida, ['id'=>'hora_salida','class' => 'form-control' . ($errors->has('hora_salida') ? ' is-invalid' : ''), 'placeholder' => 'Hora Salida']) }}
-                                {!! $errors->first('hora_salida', '<div class="invalid-feedback">:message</div>') !!}
+                                <?php echo e(Form::label('hora_salida')); ?>
+
+                                <?php echo e(Form::time('hora_salida', $asistencia->hora_salida, ['id'=>'hora_salida','class' => 'form-control' . ($errors->has('hora_salida') ? ' is-invalid' : ''), 'placeholder' => 'Hora Salida'])); ?>
+
+                                <?php echo $errors->first('hora_salida', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('lat_salida') }}
-                                {{ Form::text('lat_salida', $asistencia->lat_salida, ['id'=>'lat_salida','class' => 'form-control' . ($errors->has('lat_salida') ? ' is-invalid' : ''), 'placeholder' => 'Lat Salida']) }}
-                                {!! $errors->first('lat_salida', '<div class="invalid-feedback">:message</div>') !!}
+                                <?php echo e(Form::label('lat_salida')); ?>
+
+                                <?php echo e(Form::text('lat_salida', $asistencia->lat_salida, ['id'=>'lat_salida','class' => 'form-control' . ($errors->has('lat_salida') ? ' is-invalid' : ''), 'placeholder' => 'Lat Salida'])); ?>
+
+                                <?php echo $errors->first('lat_salida', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="form-group">
-                                {{ Form::label('long_salida') }}
-                                {{ Form::text('long_salida', $asistencia->long_salida, ['id'=>'long_salida','class' => 'form-control' . ($errors->has('long_salida') ? ' is-invalid' : ''), 'placeholder' => 'Long Salida']) }}
-                                {!! $errors->first('long_salida', '<div class="invalid-feedback">:message</div>') !!}
+                                <?php echo e(Form::label('long_salida')); ?>
+
+                                <?php echo e(Form::text('long_salida', $asistencia->long_salida, ['id'=>'long_salida','class' => 'form-control' . ($errors->has('long_salida') ? ' is-invalid' : ''), 'placeholder' => 'Long Salida'])); ?>
+
+                                <?php echo $errors->first('long_salida', '<div class="invalid-feedback">:message</div>'); ?>
+
                             </div>
                             <div class="col-md-12 mt-3">
                                 <button type="submit" class="btn btn-success" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Marcar salida</button>
@@ -172,5 +200,7 @@
             setTimeout(timedUpdate, 1000);
         }
         </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\constructora\resources\views/asistencia/asistencia_admin.blade.php ENDPATH**/ ?>

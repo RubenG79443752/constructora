@@ -142,7 +142,7 @@
         <a href="{{ route('lugartrabajos.index') }}" class="btn btn-danger"> <i class="fa fa-users"></i> Listado</a>
     </div>
 </div>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmcPuGhJi2exKdhGJuaTRHtKYYTir60No"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfD6UWGAObeZU4GObhhxRSAnXxcFLrf_I"></script>
 <script type="text/javascript">
 //var items = ($('.select2-multiple').val().split(','));
 $(document).ready(function() {

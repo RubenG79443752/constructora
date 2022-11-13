@@ -131,7 +131,7 @@
       table.sheet0 tr.row23 { height:16.5pt }
       table.sheet0 tr.row24 { height:16.5pt }
       table.sheet0 tr.row27 { height:8.25pt }
-      @page { margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 0in; }
+      @page  { margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 0in; }
         body { margin-left: 0.9in; margin-right: -2in; margin-top: 0.5in; margin-bottom: 0in; }
         #fijado {
             position:fixed;
@@ -143,7 +143,7 @@
             left:70px;
             top:80px;
         }
-        @media print {
+        @media  print {
             #fijado, #fijado1 {
             display: none !important;;
         }
@@ -151,8 +151,8 @@
     </style>
   </head>
 <body>
-    <div id="fijado"> <button type="button" onClick="window.print(); return false;" title="Imprimir value"><img src="{{ asset('imprimir.png') }}" alt="" width="45"></button> <a href="{{ url('boletas') }}" id="fijado1"><img src="{{ asset('atras.png')}}" width="50" title="Retornar a generar value"></a></div>
-    @foreach ($planilla as $value)
+    <div id="fijado"> <button type="button" onClick="window.print(); return false;" title="Imprimir value"><img src="<?php echo e(asset('imprimir.png')); ?>" alt="" width="45"></button> <a href="<?php echo e(url('boletas')); ?>" id="fijado1"><img src="<?php echo e(asset('atras.png')); ?>" width="50" title="Retornar a generar value"></a></div>
+    <?php $__currentLoopData = $planilla; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0" width="100%">
         <col class="col0">
         <col class="col1">
@@ -171,7 +171,7 @@
         <tbody>
           <tr class="row0">
             <td class="column0">&nbsp;</td>
-            <td colspan="6" align="left" class="column1 style39 s style40">EMPRESA: {{ $empresa->razon_social }}</td>
+            <td colspan="6" align="left" class="column1 style39 s style40">EMPRESA: <?php echo e($empresa->razon_social); ?></td>
             <td class="column7 style4 null"></td>
             <td class="column8 style4 null"></td>
             <td class="column9 style4 null"></td>
@@ -182,7 +182,7 @@
           </tr>
           <tr class="row1">
             <td class="column0">&nbsp;</td>
-            <td colspan="6" align="left" class="column1 style25 s style26">NIT:  {{ $empresa->n_nit }}</td>
+            <td colspan="6" align="left" class="column1 style25 s style26">NIT:  <?php echo e($empresa->n_nit); ?></td>
             <td class="column7 style6 null"></td>
             <td class="column8 style6 null"></td>
             <td class="column9 style6 null"></td>
@@ -195,7 +195,7 @@
             <td class="column0">&nbsp;</td>
             <td colspan="6" align="left" class="column1 style27 s style24">POTOSI - BOLIVIA</td>
             <td class="column7 style6 null"></td>
-            <td class="column8 style41 s style41" colspan="2">DPTO. ADM Y FIN {{ $anio }}</td>
+            <td class="column8 style41 s style41" colspan="2">DPTO. ADM Y FIN <?php echo e($anio); ?></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
             <td class="column12">&nbsp;</td>
@@ -251,11 +251,11 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style6 s">NOMBRE</td>
-            <td class="column3 style42 s style42" colspan="2">{{ $value->nombre.' '.$value->primer_apellido.' '.$value->segundo_apellido  }}</td>
+            <td class="column3 style42 s style42" colspan="2"><?php echo e($value->nombre.' '.$value->primer_apellido.' '.$value->segundo_apellido); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style6 s">SUELDO BASICO</td>
             <td class="column7 style6 null"></td>
-            <td class="column8 style12 n">{{ $value->sueldo_inicial }}</td>
+            <td class="column8 style12 n"><?php echo e($value->sueldo_inicial); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -266,11 +266,11 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style6 s">C.I. </td>
-            <td class="column3 style41 n style41" colspan="2">{{ $value->doc_identidad }}</td>
+            <td class="column3 style41 n style41" colspan="2"><?php echo e($value->doc_identidad); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style6 s">DIAS TRABAJADOS</td>
             <td class="column7 style6 null"></td>
-            <td class="column8 style6 n">{{ $value->dias_pagados }}</td>
+            <td class="column8 style6 n"><?php echo e($value->dias_pagados); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -281,11 +281,11 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style6 s">CARGO</td>
-            <td class="column3 style41 s style41" colspan="2">{{ $value->cargo }}</td>
+            <td class="column3 style41 s style41" colspan="2"><?php echo e($value->cargo); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style6 s">MES</td>
             <td class="column7 style6 null"></td>
-            <td class="column8 style13 s">{{ $value->mes }}</td>
+            <td class="column8 style13 s"><?php echo e($value->mes); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -296,7 +296,7 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style14 s">F-INGRESO</td>
-            <td class="column3 style15 n">{{ $value->fecha_ingreso }}</td>
+            <td class="column3 style15 n"><?php echo e($value->fecha_ingreso); ?></td>
             <td class="column4 style6 null"></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style6 null"></td>
@@ -340,10 +340,10 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style41 s style41" colspan="2">SALARIO GANADO</td>
-            <td class="column4 style12 n">{{ $value->sueldo_inicial }}</td>
+            <td class="column4 style12 n"><?php echo e($value->sueldo_inicial); ?></td>
             <td class="column5 style17 null"></td>
             <td class="column6 style41 s style41" colspan="2">AFP´S (12,71%) Y ANS</td>
-            <td class="column8 style12 n">{{ $value->afps }}</td>
+            <td class="column8 style12 n"><?php echo e($value->afps); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -354,10 +354,10 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style42 s style42" colspan="2">BONO DE ANTIGÜEDAD</td>
-            <td class="column4 style12 n">{{ $value->bono_antiguedad }}</td>
+            <td class="column4 style12 n"><?php echo e($value->bono_antiguedad); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style41 s style41" colspan="2">RC-IVA (13%)</td>
-            <td class="column8 style12 n">{{ $value->rc_iva }}</td>
+            <td class="column8 style12 n"><?php echo e($value->rc_iva); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -368,10 +368,10 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style42 s style42" colspan="2">HORAS EXTRAS</td>
-            <td class="column4 style18 n">{{ $value->trabajo_extra_nocturno }}</td>
+            <td class="column4 style18 n"><?php echo e($value->trabajo_extra_nocturno); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style42 s style42" colspan="2">ANTICIPO Y OTROS DSCTOS.</td>
-            <td class="column8 style12 n">{{ $value->otros_descuentos }}</td>
+            <td class="column8 style12 n"><?php echo e($value->otros_descuentos); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -413,10 +413,10 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style41 s style43" colspan="2">TOTAL INGRESOS</td>
-            <td class="column4 style19 n">{{ $value->total_ganado }}</td>
+            <td class="column4 style19 n"><?php echo e($value->total_ganado); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style41 s style43" colspan="2">TOTAL EGRESOS</td>
-            <td class="column8 style19 n">{{ $value->total_descuentos }}</td>
+            <td class="column8 style19 n"><?php echo e($value->total_descuentos); ?></td>
             <td class="column9 style6 null"></td>
             <td class="column10 style7 null"></td>
             <td class="column11">&nbsp;</td>
@@ -443,7 +443,7 @@
             <td class="column0">&nbsp;</td>
             <td class="column1 style10 null"></td>
             <td class="column2 style41 s style41" colspan="2">LIQUIDO PAGABLE <span style="font-weight:bold; color:#000000; font-family:'Tahoma'; font-size:10pt">( I - E )</span></td>
-            <td class="column4 style20 n">{{ $value->liquido_pagable }}</td>
+            <td class="column4 style20 n"><?php echo e($value->liquido_pagable); ?></td>
             <td class="column5 style6 null"></td>
             <td class="column6 style29 null style29" colspan="3" rowspan="2"></td>
             <td class="column9 style6 null"></td>
@@ -558,6 +558,7 @@
         </tbody>
     </table>
     <br>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\constructora\resources\views/planilla/boleta.blade.php ENDPATH**/ ?>

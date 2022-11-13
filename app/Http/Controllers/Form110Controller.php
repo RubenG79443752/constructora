@@ -20,11 +20,21 @@ class Form110Controller extends Controller
      */
     public function index()
     {
-        $usuario = Auth::id();
+         if (Auth::user()->rol==="Administrador") {
+            $form110s = Form110::paginate();
+
+            return view('form110.index', compact('form110s'))
+            ->with('i', (request()->input('page', 1) - 1) * $form110s->perPage());  
+        }
+        else{
+            $usuario = Auth::id();
         $form110s = Form110::where('user_id',$usuario)->paginate();
 
         return view('form110.index', compact('form110s'))
             ->with('i', (request()->input('page', 1) - 1) * $form110s->perPage());
+
+        }
+        
     }
 
     /**

@@ -1,12 +1,16 @@
+
+
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header bg-white mx-auto d-block">
-                    <img src="<?php echo e(asset('logo-constructora.jpg')); ?>" alt="Constructora" width="100">
-                    <?php echo e(__('Ingrese credenciales para acceder al sistema')); ?>
-
+                    <img src="<?php echo e(asset('logo-constructora.png')); ?>" alt="Constructora" width="150" >
+                    <td>
+                        <h4><?php echo e(__('INICIAR SESION')); ?></h4>
+                    </td>
+                   
                 </div>
 
                 <div class="card-body">

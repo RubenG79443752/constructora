@@ -29,11 +29,10 @@
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                    <?php echo e(config('app.name', 'constructora')); ?>
-
+                    <img src="<?php echo e(asset('inicio.png')); ?>" alt="constructora" width="150">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
-                    <img src="<?php echo e(asset('logo-constructora.jpg')); ?>" alt="constructora" width="40">
+                    <img src="<?php echo e(asset('MENU.png')); ?>" alt="constructora" width="30">
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -113,7 +112,7 @@
                         <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <?php echo e(Auth::user()->name); ?>: En linea
+                                    : En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
