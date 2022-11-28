@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Lugar de trabajo
 <?php $__env->stopSection(); ?>

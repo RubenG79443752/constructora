@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\Rol;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -37,8 +38,9 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
+        $roles = Rol::pluck('nombre_rol','id');
         $accion = "insertar";
-        return view('user.create', compact('user','accion'));
+        return view('user.create', compact('user','accion','roles'));
     }
 
     /**
@@ -87,8 +89,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $roles = Rol::pluck('nombre_rol','id');
         $accion = "modificar";
-        return view('user.edit', compact('user','accion'));
+        return view('user.edit', compact('user','accion','roles'));
     }
 
     /**

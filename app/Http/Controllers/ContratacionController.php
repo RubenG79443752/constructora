@@ -22,8 +22,7 @@ class ContratacionController extends Controller
     {
         $contratacions = Contratacion::paginate();
 
-        return view('contratacion.index', compact('contratacions'))
-            ->with('i', (request()->input('page', 1) - 1) * $contratacions->perPage());
+        return view('contratacion.index');
     }
 
     /**
