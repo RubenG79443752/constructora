@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Listado de variables
 <?php $__env->stopSection(); ?>

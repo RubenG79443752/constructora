@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Permisos
 <?php $__env->stopSection(); ?>

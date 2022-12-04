@@ -32,9 +32,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Planilla extends Model
 {
-    
+
     static $rules = [
-		'mes' => 'required',
+		'mes' => 'required',//
 		'anio' => 'required',
 		'horas_pagadas' => 'required',
 		'dias_pagados' => 'required',
@@ -47,7 +47,7 @@ class Planilla extends Model
 		'otros_descuentos' => 'required',
 		'total_descuentos' => 'required',
 		'liquido_pagable' => 'required',
-		'personal_id' => 'required',
+		'personal_id' => 'required',//
 		'estado' => 'required',
     ];
 
@@ -68,6 +68,6 @@ class Planilla extends Model
     {
         return $this->hasOne('App\Models\Personal', 'id', 'personal_id');
     }
-    
+
 
 }

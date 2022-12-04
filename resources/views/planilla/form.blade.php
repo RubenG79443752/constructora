@@ -27,12 +27,12 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-2">
-     {{ Form::hidden('anio', isset($planilla->anio)? $planilla->horas_pagadas:date('Y'), ['id'=>'anio','class' => 'form-control form-control-sm' . ($errors->has('anio') ? ' is-invalid' : ''), 'placeholder' => '0','min'=>'0']) }}
+         <div class="col-md-2">
+            {{ Form::hidden('anio', isset($planilla->anio)? $planilla->anio:2022, ['id'=>'anio','class' => 'form-control form-control-sm' . ($errors->has('anio') ? ' is-invalid' : ''), 'placeholder' => '0','min'=>'0']) }}
         </div>
         <div class="col-md-4">
             <div class="alert alert-info" role="alert" id="respuesta">
-               
+                ...
             </div>
         </div>
         <div class="col-md-12"><hr></div>
