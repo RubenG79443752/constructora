@@ -52,12 +52,13 @@
                 </div>
                 <div class="box-footer mt-2 text-center">
                     @if ($accion == 'insertar')
-                    <button type="submit" class="btn btn-primary btn-lg" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Marcar Entrada</button>
+                    <button type="submit" class="btn btn-primary btn-lg" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Marcar Inicio</button>
                     @else
-                    <a href="{{ route('asistencias.create') }}" class="btn btn-secondary btn-lg mb-2"> Salida descanso</a>
-                    <a href="{{ route('asistencias.create') }}" class="btn btn-secondary btn-lg mb-2"> Entrada descanso</a>
-                    <button type="submit" class="btn btn-primary btn-lg" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Marcar salida</button>
-
+                        @if ($asistencia->lugartrabajo->horario->horas_descanso != 0)
+                        <a href="#" class="btn btn-secondary btn-lg mb-2" onclick="horario_entrada('{{ $asistencia->lugartrabajo->horario->horario_ini }}','{{ $asistencia->lugartrabajo->horario->horario_ini1 }}','{{ $asistencia->lugartrabajo->horario->horario_fin1 }}')" id="salida"> Salida</a>
+                        <a href="#" class="btn btn-secondary btn-lg mb-2" onclick="horario_salida('{{ $asistencia->lugartrabajo->horario->horario_fin1 }}')" id="entrada"> Entrada</a><br>
+                        @endif
+                        <button type="submit" class="btn btn-primary btn-lg" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Marcar Fin</button>
                     @endif
 
                 </div>
@@ -106,60 +107,8 @@
             </div>
         </div>
     </div>
-
 </div>
-{{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmcPuGhJi2exKdhGJuaTRHtKYYTir60No&callback=initMap">
-</script> --}}
-
 <script>
-    // let map, infoWindow;
-    // function initMap() {
-    // map = new google.maps.Map(document.getElementById("google_canvas"), {
-    //   center: { lat: -19.58379189395981, lng: -65.75680089176369 },
-    //   zoom: 8,
-    // });
-    // infoWindow = new google.maps.InfoWindow();
-    // const locationButton = document.createElement("button");
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //       (position) => {
-    //         const pos = {
-    //           lat: position.coords.latitude,
-    //           lng: position.coords.longitude,
-    //         };
-
-
-    //       document.getElementById("long_entrada").value = pos.lng;
-    //       document.getElementById("lat_entrada").value = pos.lat;
-
-    //         infoWindow.setPosition(pos);
-    //         map.setCenter(pos);
-    //         map.setZoom(10);
-    //         const marker = new google.maps.Marker({
-    //           position: pos,
-    //           map: map,
-    //         });
-    //       },
-    //       () => {
-    //         handleLocationError(true, infoWindow, map.getCenter());
-    //       }
-    //     );
-    //   } else {
-    //     handleLocationError(false, infoWindow, map.getCenter());
-    //   }
-    // }
-
-    // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    // infoWindow.setPosition(pos);
-    // infoWindow.setContent(
-    //   browserHasGeolocation
-    //     ? "Error: The Geolocation service failed."
-    //     : "Error: Your browser doesn't support geolocation."
-    // );
-    // infoWindow.open(map);
-    // }
     (function(){
         getLocation();
         timedUpdate();
@@ -193,6 +142,51 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmcPuGhJi2exKdhGJuaTRHtKY
 
 
     }
-    // window.onload=getLocation;
+    function horario_entrada(ini,sal,ing){
+        let hora_act = moment().format('HH:mm:ss');
+        var opcion = confirm("Esta seguro de marcar SALIDA");
+        if (opcion == true) {
+            hora_actual = obtenerMinutos(hora_act);
+            inicio = obtenerMinutos(ini);
+            salida = obtenerMinutos(sal);
+            ingreso = obtenerMinutos(ing);
+
+            if(hora_actual > inicio && hora_actual < salida){
+                alert("Salida temprana");
+            }
+            else if(hora_actual > salida && hora_actual < ingreso){
+                alert("Marcado correcto");
+                document.getElementById("salida").style.visibility = "hidden";
+            }
+            else{
+                alert("Usted está fuera de horario");
+            }
+        }
+    }
+    function horario_salida(sal){
+        let hora_act = moment().format('HH:mm:ss');
+        var opcion = confirm("Esta seguro de marcar ENTRADA");
+        if (opcion == true) {
+            hora_actual = obtenerMinutos(hora_act);
+            ingreso = obtenerMinutos(sal);
+            ingreso_10 = obtenerMinutos(sal) + 10;
+            ingreso_60 = obtenerMinutos(sal) + 60;
+
+            if(hora_actual > ingreso && hora_actual < ingreso_10){
+                alert("Marcado correcto");
+                document.getElementById("entrada").style.visibility = "hidden";
+            }
+            else if(hora_actual > ingreso_10 && hora_actual <= ingreso_60){
+                alert("Ingreso con tardanza");
+            }
+            else {
+                alert("Usted esta fuera de horario");
+            }
+        }
+    }
+    function obtenerMinutos(hora){
+        var spl = hora.split(":");
+        return parseInt(spl[0])*60+parseInt(spl[1]);
+    }
     </script>
 

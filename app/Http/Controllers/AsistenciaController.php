@@ -278,31 +278,33 @@ class AsistenciaController extends Controller
     public function index_nomina()
     {
         $asistencias = Asistencia::all();
+        $personal = Personal::selectRaw('CONCAT ("CI: ",doc_identidad," | ",nombre,"  ",COALESCE(primer_apellido,"")," ",COALESCE(segundo_apellido,"")) AS nombre,id')->where('estado','Activo')->pluck('nombre','id');
         $mes = date('m');
         $anio = date('Y');
         $dias = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
 
         $option_mes = $this->option_mes($mes);
         $option_anio = $this->option_anio($anio);
-        $tabla = $this->table($anio,$mes,$dias);
+        $tabla = $this->table($anio,$mes,$dias,0);
 
         //dd($tabla);
 
-        return view('asistencia.nomina', compact('asistencias','tabla','option_mes','option_anio'));
+        return view('asistencia.nomina', compact('asistencias','tabla','option_mes','option_anio','personal'));
     }
     public function nomina(Request $request)
     {
         $mes = $request->mes;
         $anio = $request->anio;
-
+        $personal_id = ($request->personal_id)? $request->personal_id:0;
+        $personal = Personal::selectRaw('CONCAT ("CI: ",doc_identidad," | ",nombre,"  ",COALESCE(primer_apellido,"")," ",COALESCE(segundo_apellido,"")) AS nombre,id')->where('estado','Activo')->pluck('nombre','id');
         $asistencias = Asistencia::all();
 
         $dias = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
         $option_mes = $this->option_mes($mes);
         $option_anio = $this->option_anio($anio);
-        $tabla = $this->table($anio,$mes,$dias);
+        $tabla = $this->table($anio,$mes,$dias,$personal_id);
 
-        return view('asistencia.nomina', compact('asistencias','tabla','option_mes','option_anio'));
+        return view('asistencia.nomina', compact('asistencias','tabla','option_mes','option_anio','personal','personal_id'));
     }
     public function option_mes($mes){
         $mes_array = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
@@ -329,7 +331,7 @@ class AsistenciaController extends Controller
 
         return $a;
     }
-    public static function table($anio,$mes,$dias){
+    public static function table($anio,$mes,$dias,$personal_id = null){
         $dia = ['D','L','M','X','J','V','S'];
         $table = '<div class="table-responsive"><table class="table"><tr><td></td>';
         $count = 0;
@@ -346,8 +348,12 @@ class AsistenciaController extends Controller
             $table .= '<td>'.str_pad($i, 2, "0", STR_PAD_LEFT).'</td>';
         }
         $table .= '</tr>';
+        if ($personal_id != 0) {
+            $personal = Personal::where('id',$personal_id)->get();
+        }else{
+            $personal = Personal::all();
+        }
 
-        $personal = Personal::all();
         foreach ($personal as $value) {
             $table .= '<tr><td>'.$value->nombre.' '.$value->primer_apellido.' '.$value->segundo_apellido.'</td>';
 
