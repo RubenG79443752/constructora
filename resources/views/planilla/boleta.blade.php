@@ -132,7 +132,7 @@
       table.sheet0 tr.row24 { height:16.5pt }
       table.sheet0 tr.row27 { height:8.25pt }
       @page { margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 0in; }
-        body { margin-left: 0.9in; margin-right: -2in; margin-top: 0.5in; margin-bottom: 0in; }
+        body { margin-left: 0in; margin-right: 0in; margin-top: 0.2in; margin-bottom: 0in; }
         #fijado {
             position:fixed;
             left:0px;
@@ -467,12 +467,7 @@
           </tr>
           <tr class="row22">
             <td class="column0">&nbsp;</td>
-            <td class="column1 style30 f style32" colspan="10">
-            
-            
-                <script type="text/javascript"> var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); var f=new Date(); document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()); </script>
-              
-              </td>
+            <td class="column1 style30 f style32" colspan="10">Monday, June 06, 2022</td>
             <td class="column11">&nbsp;</td>
             <td class="column12">&nbsp;</td>
             <td class="column13">&nbsp;</td>

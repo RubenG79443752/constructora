@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Asistencia
 <?php $__env->stopSection(); ?>

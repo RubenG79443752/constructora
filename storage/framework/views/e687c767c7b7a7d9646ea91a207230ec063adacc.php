@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Generar Nomina de Asistencia
 <?php $__env->stopSection(); ?>
@@ -37,6 +35,14 @@
                                         <?php echo $option_anio; ?>
 
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <?php echo Form::label('Personal'); ?>
+
+                                    <?php echo Form::select('personal_id',$personal,(isset($personal_id))? $personal_id:null, ['class' => 'form-select form-select-sm','placeholder' => '--Todo--']); ?>
+
                                 </div>
                             </div>
                             <div class="box-footer mt-2">
