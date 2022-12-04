@@ -1,6 +1,25 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    {{ Form::label('mes') }}
+                    <select class="form-select form-select-sm" name="mes" id="mes">
+                        <option value="Enero" @if(old('mes', $planilla->mes) === 'Enero')  selected @endif>Enero</option>
+                        <option value="Febrero" @if(old('mes', $planilla->mes) === 'Febrero')  selected @endif>Febrero</option>
+                        <option value="Marzo" @if(old('mes', $planilla->mes) === 'Marzo')  selected @endif>Marzo</option>
+                        <option value="Abril" @if(old('mes', $planilla->mes) === 'Abril')  selected @endif>Abril</option>
+                        <option value="Mayo" @if(old('mes', $planilla->mes) === 'Mayo')  selected @endif>Mayo</option>
+                        <option value="Junio" @if(old('mes', $planilla->mes) === 'Junio')  selected @endif>Junio</option>
+                        <option value="Julio" @if(old('mes', $planilla->mes) === 'Julio')  selected @endif>Julio</option>
+                        <option value="Agosto" @if(old('mes', $planilla->mes) === 'Agosto')  selected @endif>Agosto</option>
+                        <option value="Septiembre" @if(old('mes', $planilla->mes) === 'Septiembre')  selected @endif>Septiembre</option>
+                        <option value="Octubre" @if(old('mes', $planilla->mes) === 'Octubre')  selected @endif>Octubre</option>
+                        <option value="Noviembre" @if(old('mes', $planilla->mes) === 'Noviembre')  selected @endif>Noviembre</option>
+                        <option value="Diciembre" @if(old('mes', $planilla->mes) === 'Diciembre')  selected @endif>Diciembre</option>
+                    </select>
+                </div>
+            </div>
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('Personal') !!}
@@ -8,25 +27,7 @@
                 {!! $errors->first('personal_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                {{ Form::label('mes') }}
-                <select class="form-select form-select-sm" name="mes" id="mes">
-                    <option value="Enero" @if(old('mes', $planilla->mes) === 'Enero')  selected @endif>Enero</option>
-                    <option value="Febrero" @if(old('mes', $planilla->mes) === 'Febrero')  selected @endif>Febrero</option>
-                    <option value="Marzo" @if(old('mes', $planilla->mes) === 'Marzo')  selected @endif>Marzo</option>
-                    <option value="Abril" @if(old('mes', $planilla->mes) === 'Abril')  selected @endif>Abril</option>
-                    <option value="Mayo" @if(old('mes', $planilla->mes) === 'Mayo')  selected @endif>Mayo</option>
-                    <option value="Junio" @if(old('mes', $planilla->mes) === 'Junio')  selected @endif>Junio</option>
-                    <option value="Julio" @if(old('mes', $planilla->mes) === 'Julio')  selected @endif>Julio</option>
-                    <option value="Agosto" @if(old('mes', $planilla->mes) === 'Agosto')  selected @endif>Agosto</option>
-                    <option value="Septiembre" @if(old('mes', $planilla->mes) === 'Septiembre')  selected @endif>Septiembre</option>
-                    <option value="Octubre" @if(old('mes', $planilla->mes) === 'Octubre')  selected @endif>Octubre</option>
-                    <option value="Noviembre" @if(old('mes', $planilla->mes) === 'Noviembre')  selected @endif>Noviembre</option>
-                    <option value="Diciembre" @if(old('mes', $planilla->mes) === 'Diciembre')  selected @endif>Diciembre</option>
-                </select>
-            </div>
-        </div>
+        
         <div class="col-md-2">
      {{ Form::hidden('anio', isset($planilla->anio)? $planilla->horas_pagadas:date('Y'), ['id'=>'anio','class' => 'form-control form-control-sm' . ($errors->has('anio') ? ' is-invalid' : ''), 'placeholder' => '0','min'=>'0']) }}
         </div>
