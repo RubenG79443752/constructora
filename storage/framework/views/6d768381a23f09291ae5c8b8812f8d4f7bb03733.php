@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Generar Boletas
 <?php $__env->stopSection(); ?>

@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -22,6 +23,7 @@
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<?php echo \Livewire\Livewire::styles(); ?>
 
 </head>
 <body>
@@ -29,10 +31,11 @@
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                    <img src="<?php echo e(asset('inicio.png')); ?>" alt="constructora" width="150">
+                    <?php echo e(config('app.name', 'constructora')); ?>
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
-                    <img src="<?php echo e(asset('MENU.png')); ?>" alt="constructora" width="30">
+                    <img src="<?php echo e(asset('logo-constructora.jpg')); ?>" alt="constructora" width="40">
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,7 +45,7 @@
                     <?php else: ?>
                         <a class="btn btn-primary active" href="<?php echo e(url('/')); ?>"><?php echo e(__('Inicio')); ?></a>
 
-                        <?php if(Auth::user()->rol==="Administrador"): ?>
+                        <?php if(Auth::user()->rol===1): ?>
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Configuraciones
@@ -60,6 +63,7 @@
                             Administrador
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
+                                <li><a class="dropdown-item" href="<?php echo e(route('rols.index')); ?>"><i class="bi bi-person-bounding-box"></i> <?php echo e(__('Roles usuario')); ?></a></li>
                                 <li><a class="dropdown-item" href="<?php echo e(route('users.index')); ?>"><i class="bi bi-person-bounding-box"></i> <?php echo e(__('Modulo usuarios')); ?></a></li>
                                 <li><hr></li>
                                 <li><a class="dropdown-item" href="<?php echo e(route('personals.index')); ?>"><i class="bi bi-card-list"></i> <?php echo e(__('Modulo de registro de personal')); ?></a></li>
@@ -89,11 +93,15 @@
                         <?php else: ?>
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Trabajador
+                            Opciones de sistema
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
-                                <li><a class="dropdown-item" href="<?php echo e(route('asistencias.create')); ?>"><i class="bi bi-fingerprint"></i> <?php echo e(__('Modulo web control de asistencia')); ?></a></li>
-                                <li><a class="dropdown-item" href="<?php echo e(route('form110s.index')); ?>"><i class="bi bi-file-earmark-arrow-up"></i> <?php echo e(__('Modulo registro facturas Form. 110')); ?></a></li>
+                                <?php
+                                    $acceso = \App\Models\Acceso::where('user_id',Auth::id())->where('estado','Habilitado')->get();
+                                ?>
+                                <?php $__currentLoopData = $acceso; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><a class="dropdown-item" href="<?php echo route($value->link); ?>"><?php echo $value->icono; ?> <?php echo $value->opcion; ?></a></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
                         <?php endif; ?>
@@ -112,7 +120,19 @@
                         <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    : En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15">
+<<<<<<< HEAD
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
+=======
+<<<<<<< HEAD
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
+=======
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+>>>>>>> 2987c7eea6affb2b83de8295ce556516b7c3ad24
+>>>>>>> de9411025092ca657ae6a96fc0fec5e39644f890
+>>>>>>> 400b0a57c4ea5e362a31b7ef52293e8df8adc7bf
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -140,6 +160,8 @@
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
+    <?php echo \Livewire\Livewire::scripts(); ?>
+
 </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\constructora\resources\views/layouts/app.blade.php ENDPATH**/ ?>

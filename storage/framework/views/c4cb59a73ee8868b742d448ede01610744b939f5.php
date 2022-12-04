@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Formularios 110
 <?php $__env->stopSection(); ?>

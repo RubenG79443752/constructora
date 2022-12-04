@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Usuarios
 <?php $__env->stopSection(); ?>
@@ -49,12 +47,12 @@
 											<td><?php echo e($user->name); ?></td>
 											<td><?php echo e($user->usuario); ?></td>
                                             <td><?php echo e($user->email); ?></td>
-											<td><?php echo e($user->rol); ?></td>
+											<td><?php echo e($user->role->nombre_rol); ?></td>
 											<td><?php echo e($user->estado); ?></td>
 
                                             <td align="right">
                                                  <form action="<?php echo e(route('users.destroy',$user->id)); ?>" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="<?php echo e(route('users.show',$user->id)); ?>"><i class="fa fa-fw fa-eye"></i> Detalle</a>
+                                                    <a class="btn btn-sm btn-primary " href="<?php echo e(url('index_acceso',$user->id)); ?>"><i class="bi bi-tools"></i> Permisos</a>
                                                     <a class="btn btn-sm btn-success" href="<?php echo e(route('users.edit',$user->id)); ?>"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     <?php echo csrf_field(); ?>
                                                     <?php echo method_field('DELETE'); ?>

@@ -19,11 +19,8 @@
         </div>
         @endif
         <div class="form-group">
-            <label>Rol</label>
-            <select class="form-select" name="rol" id="rol">
-                <option value="Administrador" @if(old('rol', $user->rol) === 'Administrador')  selected @endif>Administrador</option>
-                <option value="Trabajador" @if(old('rol', $user->rol) === 'Trabajador')  selected @endif>Trabajador</option>
-            </select>
+            {!! Form::label('Rol') !!}
+                {!! Form::select('rol', $roles, (isset($user->rol))? $user->rol:null, ['class' => 'form-select form-select']) !!}
         </div>
         <div class="form-group">
             <label>Estado</label>
