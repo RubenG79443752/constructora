@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Actualizar Lugar trabajo
 <?php $__env->stopSection(); ?>

@@ -53,7 +53,11 @@ return [
     | Examples: "/assets", "myurl.com/app".
     |
     */
+<<<<<<< HEAD
     'asset_url' => 'http://127.0.0.1:8000',
+=======
+    'asset_url' => 'http://127.0.0.1:8000/constructora/public',
+>>>>>>> 2987c7eea6affb2b83de8295ce556516b7c3ad24
     // 'asset_url' => 'http://192.168.0.15/fedecom/public',
 
     /*

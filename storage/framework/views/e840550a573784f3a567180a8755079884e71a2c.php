@@ -160,7 +160,7 @@
         <a href="<?php echo e(route('lugartrabajos.index')); ?>" class="btn btn-danger"> <i class="fa fa-users"></i> Listado</a>
     </div>
 </div>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq8VEY-CynKEk1uRF1z6tA0bCH3UgnTVM"></script>
 <script type="text/javascript">
 //var items = ($('.select2-multiple').val().split(','));
 $(document).ready(function() {
