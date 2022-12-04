@@ -30,58 +30,10 @@
                     @endif
 
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-                                        <th>No</th>
-
-										<th>Doc Identidad</th>
-										<th>Nombre</th>
-										<th>Primer Apellido</th>
-										<th>Segundo Apellido</th>
-										<th>Fecha Nacimiento</th>
-										<th>Sexo</th>
-                                        <th>Domicilio</th>
-										<th>Pais de nacionalidad</th>
-										<th>Cargo</th>
-                                        <th>Estado</th>
-
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($personals as $personal)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-
-											<td>{{ $personal->doc_identidad }}</td>
-											<td>{{ $personal->nombre }}</td>
-											<td>{{ $personal->primer_apellido }}</td>
-											<td>{{ $personal->segundo_apellido }}</td>
-											<td>{{ $personal->fecha_nacimiento }}</td>
-                                            <td>{{ $personal->sexo }}</td>
-                                            <td>{{ $personal->domicilio }}</td>
-											<td>{{ $personal->pai->pais }}</td>
-											<td>{{ $personal->cargo->cargo }}</td>
-                                            <td>{{ $personal->estado }}</td>
-
-                                            <td align="right">
-                                                <form action="{{ route('personals.destroy',$personal->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-success" title="Editar datos" href="{{ route('personals.edit',$personal->id) }}"><i class="bi bi-eraser-fill"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar datos de personal"><i class="bi bi-trash"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        @livewire('personal-table')
                     </div>
                 </div>
-                {!! $personals->links() !!}
+
             </div>
         </div>
     </div>

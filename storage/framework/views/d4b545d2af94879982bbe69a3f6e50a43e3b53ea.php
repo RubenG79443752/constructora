@@ -112,7 +112,7 @@
                         <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    : En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15">
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
