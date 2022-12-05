@@ -48,12 +48,12 @@
 											<td>{{ $user->name }}</td>
 											<td>{{ $user->usuario }}</td>
                                             <td>{{ $user->email }}</td>
-											<td>{{ $user->rol }}</td>
+											<td>{{ $user->role->nombre_rol }}</td>
 											<td>{{ $user->estado }}</td>
 
                                             <td align="right">
                                                  <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Detalle</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ url('index_acceso',$user->id) }}"><i class="bi bi-tools"></i> Permisos</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')

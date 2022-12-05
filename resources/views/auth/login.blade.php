@@ -6,11 +6,10 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header bg-white mx-auto d-block">
-                    <img src="{{ asset('logo-constructora.png') }}" alt="Constructora" width="150" >
+                <img src="{{ asset('logo-constructora.png') }}" alt="Constructora" width="150" >
                     <td>
                         <h4>{{ __('INICIAR SESION') }}</h4>
                     </td>
-                   
                 </div>
 
                 <div class="card-body">

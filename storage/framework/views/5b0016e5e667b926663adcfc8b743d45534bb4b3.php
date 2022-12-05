@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Empresa
 <?php $__env->stopSection(); ?>

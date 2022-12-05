@@ -20,7 +20,7 @@ class Form110Controller extends Controller
      */
     public function index()
     {
-         if (Auth::user()->rol==="Administrador") {
+        if (Auth::user()->rol==="Administrador") {
             $form110s = Form110::paginate();
 
             return view('form110.index', compact('form110s'))
@@ -34,7 +34,6 @@ class Form110Controller extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $form110s->perPage());
 
         }
-        
     }
 
     /**

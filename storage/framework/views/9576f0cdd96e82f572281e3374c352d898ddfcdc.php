@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Asistencia
 <?php $__env->stopSection(); ?>
@@ -103,7 +101,7 @@
                             <div class="form-group">
                                 <?php echo e(Form::label('lat_entrada')); ?>
 
-                                <?php echo e(Form::text('lat_entrada', $asistencia->lat_salida, ['id'=>'lat_entrada','class' => 'form-control' . ($errors->has('lat_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Lat Salida'])); ?>
+                                <?php echo e(Form::text('lat_entrada', $asistencia->lat_entrada, ['id'=>'lat_entrada','class' => 'form-control' . ($errors->has('lat_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Lat Entrada',($accion=='insertar')? '':'disabled'])); ?>
 
                                 <?php echo $errors->first('lat_entrada', '<div class="invalid-feedback">:message</div>'); ?>
 
@@ -111,12 +109,11 @@
                             <div class="form-group">
                                 <?php echo e(Form::label('long_entrada')); ?>
 
-                                <?php echo e(Form::text('long_entrada', $asistencia->long_salida, ['id'=>'long_entrada','class' => 'form-control' . ($errors->has('long_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Long Salida'])); ?>
+                                <?php echo e(Form::text('long_entrada', $asistencia->long_entrada, ['id'=>'long_entrada','class' => 'form-control' . ($errors->has('long_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Long Entrada',($accion=='insertar')? '':'disabled'])); ?>
 
                                 <?php echo $errors->first('long_entrada', '<div class="invalid-feedback">:message</div>'); ?>
 
                             </div>
-                          
                             <div class="form-group">
                                 <?php echo e(Form::hidden('estado_entrada', ($asistencia->estado_entrada)? $asistencia->estado_entrada:'Sin_marcar', [($accion=='insertar')? 'readonly':'disabled','class' => 'form-control bg-danger text-white' . ($errors->has('estado_entrada') ? ' is-invalid' : ''), 'placeholder' => '...'])); ?>
 

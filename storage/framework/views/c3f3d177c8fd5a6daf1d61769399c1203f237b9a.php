@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Administrar asistencia
 <?php $__env->stopSection(); ?>
