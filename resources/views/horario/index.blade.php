@@ -37,8 +37,10 @@
                                         <th>No</th>
 
                                         <th>Nombre</th>
-										<th>Horario Inicial</th>
-										<th>Horario Final</th>
+										<th>Inicio</th>
+                                        <th>Salida</th>
+										<th>Ingreso</th>
+                                        <th>Fin</th>
                                         <th>Horas descanso</th>
 
                                         <th></th>
@@ -51,7 +53,9 @@
 
                                             <td>{{ $horario->nombre }}</td>
 											<td>{{ $horario->horario_ini }}</td>
-											<td>{{ $horario->horario_fin }}</td>
+                                            <td>{{ $horario->horario_ini1 }}</td>
+                                            <td>{{ $horario->horario_fin1 }}</td>
+                                            <td>{{ $horario->horario_fin }}</td>
                                             <td>{{ $horario->horas_descanso }}</td>
 
                                             <td align="right">

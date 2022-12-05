@@ -33,68 +33,9 @@
                     @endif
 
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-                                        <th>No</th>
-
-                                        <th>Empleado</th>
-										<th>Mes</th>
-										<th>Anio</th>
-										<th>Horas Pagadas</th>
-										<th>Dias Pagados</th>
-										<th>Haber Basico</th>
-										<th>Bono Antiguedad</th>
-										<th>Trabajo Extra</th>
-										<th>Total Ganado</th>
-										<th>Afps</th>
-										<th>Rc Iva</th>
-										<th>Otros Descuentos</th>
-										<th>Total Descuentos</th>
-										<th>Liquido Pagable</th>
-										<th>Estado</th>
-
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($planillas as $planilla)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-
-                                            <td>{{ $planilla->personal->nombre.' '.$planilla->personal->primer_apellido.' '.$planilla->personal->segundo_apellido }}</td>
-											<td>{{ $planilla->mes }}</td>
-											<td>{{ $planilla->anio }}</td>
-											<td>{{ $planilla->horas_pagadas }}</td>
-											<td>{{ $planilla->dias_pagados }}</td>
-											<td>{{ $planilla->haber_basico }}</td>
-											<td>{{ $planilla->bono_antiguedad }}</td>
-											<td>{{ $planilla->trabajo_extra_nocturno }}</td>
-											<td>{{ $planilla->total_ganado }}</td>
-											<td>{{ $planilla->afps }}</td>
-											<td>{{ $planilla->rc_iva }}</td>
-											<td>{{ $planilla->otros_descuentos }}</td>
-											<td>{{ $planilla->total_descuentos }}</td>
-											<td>{{ $planilla->liquido_pagable }}</td>
-											<td>{{ $planilla->estado }}</td>
-
-                                            <td>
-                                                <form action="{{ route('planillas.destroy',$planilla->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-warning" href="{{ route('planillas.edit',$planilla->id) }}" title="Actualizar registro"><i class="bi bi-pen-fill"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar registro"><i class="bi bi-trash3-fill"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        @livewire('planilla-table')
                     </div>
                 </div>
-                {!! $planillas->links() !!}
             </div>
         </div>
     </div>

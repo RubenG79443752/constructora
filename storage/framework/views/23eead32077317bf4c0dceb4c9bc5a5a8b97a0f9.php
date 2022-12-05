@@ -30,54 +30,23 @@
                     <?php endif; ?>
 
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-                                        <th>No</th>
-
-                                        <th>Personal</th>
-										<th>Contrato</th>
-                                        <th>Ref. de contrato</th>
-										<th>Fecha Ingreso</th>
-										<th>Sueldo Inicial (Bs.)</th>
-										<th>Garantia</th>
-										<th>Empresa</th>
-
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $__currentLoopData = $contratacions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $contratacion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <tr>
-                                            <td><?php echo e(++$i); ?></td>
-
-                                            <td><?php echo e($contratacion->personal->nombre.' '.$contratacion->personal->primer_apellido.' '.$contratacion->personal->segundo_apellido); ?></td>
-											<td><a href="<?php echo e(asset('storage/'.$contratacion->contrato)); ?>" class="text-decoration-none" target="_blank"><img src="<?php echo e(asset('storage/'.$contratacion->contrato)); ?>" alt="" width="90"></a></td>
-											<td><?php echo e($contratacion->referencia_contrato); ?></td>
-                                            <td><?php echo e($contratacion->fecha_ingreso); ?></td>
-											<td><?php echo e($contratacion->sueldo_inicial); ?></td>
-											<td><?php echo e($contratacion->garantia); ?></td>
-											<td><?php echo e($contratacion->empresa->razon_social); ?></td>
-
-                                            <td align="right">
-                                                <form action="<?php echo e(route('contratacions.destroy',$contratacion->id)); ?>" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="<?php echo e(route('contratacions.show',$contratacion->id)); ?>"><i class="fa fa-fw fa-eye"></i> Detalle</a>
-                                                    <a class="btn btn-sm btn-success" href="<?php echo e(route('contratacions.edit',$contratacion->id)); ?>"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    <?php echo csrf_field(); ?>
-                                                    <?php echo method_field('DELETE'); ?>
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
-                            </table>
-                        </div>
+                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('contratacion-table')->html();
+} elseif ($_instance->childHasBeenRendered('aFfs3RZ')) {
+    $componentId = $_instance->getRenderedChildComponentId('aFfs3RZ');
+    $componentTag = $_instance->getRenderedChildComponentTagName('aFfs3RZ');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('aFfs3RZ');
+} else {
+    $response = \Livewire\Livewire::mount('contratacion-table');
+    $html = $response->html();
+    $_instance->logRenderedChild('aFfs3RZ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                     </div>
                 </div>
-                <?php echo $contratacions->links(); ?>
-
             </div>
         </div>
     </div>
