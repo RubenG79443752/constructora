@@ -1,0 +1,2 @@
+<a href="<?php echo e(asset('storage/'.$row->contrato)); ?>" class="text-decoration-none" target="_blank"><img src="<?php echo e(asset('storage/'.$row->contrato)); ?>" alt="" width="90"></a>
+<?php /**PATH C:\xampp\htdocs\constructora\constructora defensa borrador\resources\views/contratacion/contrato.blade.php ENDPATH**/ ?>

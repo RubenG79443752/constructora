@@ -48,11 +48,25 @@
 											<td>{{ $acceso->opcion }}</td>
                                             <td>{!! ($acceso->estado == "Habilitado")? '<span class="badge bg-primary">Habilitado</span>':'<span class="badge bg-danger">Deshabilitado</span>' !!}</td>
                                             <td>
+<<<<<<< HEAD
                                             <form action="{{ route('accesos.destroy',$acceso->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                             <button type="submit" class="btn btn-warning btn-sm"><i class="bi bi-star-half"></i> Estado</button>
                                             </form>
+=======
+                                                <a class="btn btn-sm btn-success" href="{{ route('accesos.edit',$acceso->id) }}"><i class="bi bi-pencil-square"></i> Editar permiso</a>
+<<<<<<< HEAD
+                                                <form action="{{ route('accesos.destroy',$acceso->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+<button type="submit" class="btn btn-warning btn-sm"><i class="bi bi-star-half"></i> Estado</button>
+{{ Form::hidden('id', $acceso->user_id, ['class' => 'form-control']) }}
+</form>
+=======
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+                                            </td>
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
                                         </tr>
                                     @endforeach
                                 </tbody>

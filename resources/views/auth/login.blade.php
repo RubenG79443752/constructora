@@ -6,9 +6,14 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header bg-white mx-auto d-block">
+<<<<<<< HEAD
                     <img src="{{ asset('logo-constructora.png') }}" alt="Constructora" width="150">
                     <h4><?php echo e(__('INICIAR SESION')); ?></h4>
                     </td>
+=======
+                    <img src="{{ asset('logo-constructora.jpg') }}" alt="Constructora" width="100">
+                    {{ __('Ingrese credenciales para acceder al sistema') }}
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
                 </div>
 
                 <div class="card-body">

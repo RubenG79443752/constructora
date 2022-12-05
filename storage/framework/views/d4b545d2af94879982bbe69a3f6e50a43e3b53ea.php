@@ -120,7 +120,27 @@
                         <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+<<<<<<< HEAD
                                     <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
+=======
+<<<<<<< HEAD
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
+=======
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+>>>>>>> 2987c7eea6affb2b83de8295ce556516b7c3ad24
+>>>>>>> de9411025092ca657ae6a96fc0fec5e39644f890
+>>>>>>> 400b0a57c4ea5e362a31b7ef52293e8df8adc7bf
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

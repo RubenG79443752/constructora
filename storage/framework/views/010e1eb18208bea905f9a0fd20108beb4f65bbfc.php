@@ -37,6 +37,20 @@
                         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('planilla-table')->html();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+} elseif ($_instance->childHasBeenRendered('7jzopmV')) {
+    $componentId = $_instance->getRenderedChildComponentId('7jzopmV');
+    $componentTag = $_instance->getRenderedChildComponentTagName('7jzopmV');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('7jzopmV');
+} else {
+    $response = \Livewire\Livewire::mount('planilla-table');
+    $html = $response->html();
+    $_instance->logRenderedChild('7jzopmV', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+=======
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
 } elseif ($_instance->childHasBeenRendered('gkVuxIR')) {
     $componentId = $_instance->getRenderedChildComponentId('gkVuxIR');
     $componentTag = $_instance->getRenderedChildComponentTagName('gkVuxIR');
@@ -46,6 +60,10 @@ if (! isset($_instance)) {
     $response = \Livewire\Livewire::mount('planilla-table');
     $html = $response->html();
     $_instance->logRenderedChild('gkVuxIR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+<<<<<<< HEAD
+=======
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
 }
 echo $html;
 ?>
