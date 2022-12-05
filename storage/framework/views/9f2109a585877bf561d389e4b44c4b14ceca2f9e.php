@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('template_title'); ?>
     Crear Planilla
 <?php $__env->stopSection(); ?>

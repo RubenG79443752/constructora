@@ -35,6 +35,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    {!! Form::label('Personal') !!}
+                                    {!! Form::select('personal_id',$personal,(isset($personal_id))? $personal_id:null, ['class' => 'form-select form-select-sm','placeholder' => '--Todo--']) !!}
+                                </div>
+                            </div>
                             <div class="box-footer mt-2">
                                 <button type="submit" class="btn btn-info" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Generar resumen de asistencia</button>
                                 <a href="{{ route('menu_asistencia') }}" class="btn btn-danger"> <i class="bi bi-house-fill"></i> Menu de opciones</a>

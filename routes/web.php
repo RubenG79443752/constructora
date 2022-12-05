@@ -8,7 +8,11 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::middleware(['auth'])->group(function () {
+    //Roles
+    Route::resource('rols', App\Http\Controllers\RolController::class);
 
+    Route::resource('accesos', App\Http\Controllers\AccesoController::class);
+    Route::get('/index_acceso/{user_id}', [App\Http\Controllers\AccesoController::class, 'index_acceso'])->name('index_acceso');
     // rutas password
     Route::get('/password_user', [App\Http\Controllers\UserController::class, 'password_user'])->name('password_user');
     Route::post('/updatepassword_user', [App\Http\Controllers\UserController::class, 'updatepassword_user'])->name('updatepassword_user');

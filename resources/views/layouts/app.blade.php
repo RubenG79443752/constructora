@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -22,17 +23,17 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+@livewireStyles
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('inicio.png') }}" alt="constructora" width="150">
+                <img src="{{ asset('inicio.png') }}" alt="constructora" width="150">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <img src="{{ asset('MENU.png') }}" alt="constructora" width="30">
+                <img src="{{ asset('MENU.png') }}" alt="constructora" width="30">
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,7 +43,7 @@
                     @else
                         <a class="btn btn-primary active" href="{{ url('/') }}">{{ __('Inicio') }}</a>
 
-                        @if(Auth::user()->rol==="Administrador")
+                        @if(Auth::user()->rol===1)
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Configuraciones
@@ -60,6 +61,7 @@
                             Administrador
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
+                                <li><a class="dropdown-item" href="{{ route('rols.index') }}"><i class="bi bi-person-bounding-box"></i> {{ __('Roles usuario') }}</a></li>
                                 <li><a class="dropdown-item" href="{{ route('users.index') }}"><i class="bi bi-person-bounding-box"></i> {{ __('Modulo usuarios') }}</a></li>
                                 <li><hr></li>
                                 <li><a class="dropdown-item" href="{{ route('personals.index') }}"><i class="bi bi-card-list"></i> {{ __('Modulo de registro de personal') }}</a></li>
@@ -89,11 +91,15 @@
                         @else
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Trabajador
+                            Opciones de sistema
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
-                                <li><a class="dropdown-item" href="{{ route('asistencias.create') }}"><i class="bi bi-fingerprint"></i> {{ __('Modulo web control de asistencia') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('form110s.index') }}"><i class="bi bi-file-earmark-arrow-up"></i> {{ __('Modulo registro facturas Form. 110') }}</a></li>
+                                @php
+                                    $acceso = \App\Models\Acceso::where('user_id',Auth::id())->where('estado','Habilitado')->get();
+                                @endphp
+                                @foreach ($acceso as $value)
+                                <li><a class="dropdown-item" href="{!! route($value->link)  !!}">{!! $value->icono !!} {!! $value->opcion !!}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         @endif
@@ -112,7 +118,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    : En linea <img src="{{ asset('enlinea.png') }}" alt="constructora" width="15">
+                                : En linea <img src="{{ asset('enlinea.png') }}" alt="constructora" width="15">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -139,5 +145,6 @@
             @yield('content')
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>

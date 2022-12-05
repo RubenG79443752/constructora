@@ -55,4 +55,9 @@ class User extends Authenticatable
     ];
 
     protected $perPage = 20;
+
+    public function role()
+    {
+        return $this->hasOne('App\Models\Rol', 'id', 'rol');
+    }
 }
