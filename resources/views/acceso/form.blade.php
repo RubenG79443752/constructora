@@ -12,7 +12,10 @@
                 <option value="Habilitado" @if(old('estado', $acceso->estado) === 'Habilitado')  selected @endif>Habilitado</option>
                 <option value="Deshabilitado" @if(old('estado', $acceso->estado) === 'Deshabilitado')  selected @endif>Deshabilitado</option>
             </select>
+<<<<<<< HEAD
             {{ Form::hidden('id', $acceso->user_id, ['class' => 'form-control']) }}
+=======
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
         </div>
 
     </div>

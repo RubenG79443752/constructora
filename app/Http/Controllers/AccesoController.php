@@ -97,7 +97,11 @@ class AccesoController extends Controller
 
         $acceso->update($request->all());
 
+<<<<<<< HEAD
         return redirect()->route('index_acceso',$request->id)
+=======
+        return redirect()->route('accesos.index')
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
             ->with('success', 'Acceso actulizado satisfactoriamente');
     }
 
@@ -108,6 +112,7 @@ class AccesoController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         $acceso = Acceso::find($id);
 $mensaje = '';
 if($acceso->estado == 'Habilitado'){
@@ -125,3 +130,11 @@ return redirect()->route('accesos.index')
     ->with('success', $mensaje);
     }
 }
+=======
+        $acceso = Acceso::find($id)->delete();
+
+        return redirect()->route('accesos.index')
+            ->with('success', 'Acceso eliminado satisfatoriamente');
+    }
+}
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681

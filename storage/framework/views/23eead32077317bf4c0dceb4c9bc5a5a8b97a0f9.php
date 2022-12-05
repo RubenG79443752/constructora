@@ -33,6 +33,7 @@
                         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('contratacion-table')->html();
+<<<<<<< HEAD
 } elseif ($_instance->childHasBeenRendered('aFfs3RZ')) {
     $componentId = $_instance->getRenderedChildComponentId('aFfs3RZ');
     $componentTag = $_instance->getRenderedChildComponentTagName('aFfs3RZ');
@@ -42,6 +43,17 @@ if (! isset($_instance)) {
     $response = \Livewire\Livewire::mount('contratacion-table');
     $html = $response->html();
     $_instance->logRenderedChild('aFfs3RZ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+=======
+} elseif ($_instance->childHasBeenRendered('gO2bURZ')) {
+    $componentId = $_instance->getRenderedChildComponentId('gO2bURZ');
+    $componentTag = $_instance->getRenderedChildComponentTagName('gO2bURZ');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('gO2bURZ');
+} else {
+    $response = \Livewire\Livewire::mount('contratacion-table');
+    $html = $response->html();
+    $_instance->logRenderedChild('gO2bURZ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
 }
 echo $html;
 ?>
