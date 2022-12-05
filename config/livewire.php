@@ -53,7 +53,31 @@ return [
     | Examples: "/assets", "myurl.com/app".
     |
     */
+<<<<<<< HEAD
     'asset_url' => 'http://127.0.0.1:8000',
+=======
+<<<<<<< HEAD
+    'asset_url' => 'http://127.0.0.1/constructora/public',
+=======
+<<<<<<< HEAD
+    'asset_url' => 'http://127.0.0.1:8000',
+=======
+<<<<<<< HEAD
+    'asset_url' => 'http://127.0.0.1:8000',
+=======
+<<<<<<< HEAD
+    'asset_url' => 'http://127.0.0.1/constructora/1/constructora/public',
+=======
+<<<<<<< HEAD
+    'asset_url' => 'http://127.0.0.1:8000',
+=======
+    'asset_url' => 'http://127.0.0.1:8000/constructora/public',
+>>>>>>> 2987c7eea6affb2b83de8295ce556516b7c3ad24
+>>>>>>> de9411025092ca657ae6a96fc0fec5e39644f890
+>>>>>>> 400b0a57c4ea5e362a31b7ef52293e8df8adc7bf
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
     // 'asset_url' => 'http://192.168.0.15/fedecom/public',
 
     /*

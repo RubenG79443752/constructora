@@ -1,3 +1,4 @@
+
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="container">
@@ -12,14 +13,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12"></div>
+            
+            
+            <head>
+    
+                    <script>
+     $(document).ready( function () {
+      $("input").on("keypress", function () {
+       $input=$(this);
+       setTimeout(function () {
+        $input.val($input.val().toUpperCase());
+       },50);
+      })
+     })
+    </script>
+                     
+           
+<div class="col-md-12"></div>
             <div class="col-md-3">
-                <div class="form-group">
+                <div class="form-group" >
                     {{ Form::label('nombre') }}
-                    {{ Form::text('nombre', $personal->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre completo']) }}
+                    {{ Form::text ('nombre', $personal->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre completo']) }}
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>
+            </head>
+            
         <div class="col-md-3">
             <div class="form-group">
                 {{ Form::label('primer_apellido') }}
@@ -38,7 +57,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 {{ Form::label('fecha_nacimiento') }}
-                {{ Form::date('fecha_nacimiento', $personal->fecha_nacimiento, ['class' => 'form-control' . ($errors->has('fecha_nacimiento') ? ' is-invalid' : ''), 'placeholder' => '00/00/0000']) }}
+                {{ Form::text('fecha_nacimiento', $personal->fecha_nacimiento, ['class' => 'form-control' . ($errors->has('fecha_nacimiento') ? ' is-invalid' : ''), 'placeholder' => 'AÑO-MES-DIA']) }}
                 {!! $errors->first('fecha_nacimiento', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
@@ -85,7 +104,7 @@
         </div>
     </div>
     <div class="box-footer mt-2">
-        <button type="submit" class="btn btn-primary" onclick="this.disabled=true;this.value='Enviando...';this.form.submit();"> Guardar</button>
+        <button type="submit" class="btn btn-primary" this.value='Enviando...';this.form.submit();"> Guardar</button>
         <a href="{{ route('personals.index') }}" class="btn btn-danger"> <i class="fa fa-users"></i> Listado</a>
     </div>
 </div>

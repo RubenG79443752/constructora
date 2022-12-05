@@ -97,8 +97,22 @@ class AccesoController extends Controller
 
         $acceso->update($request->all());
 
+<<<<<<< HEAD
         return redirect()->route('index_acceso',$request->id)
             ->with('success', 'Acceso actulizado satisfactoriamente');
+=======
+<<<<<<< HEAD
+        return redirect()->route('index_acceso',$request->id)
+        ->with('success', 'Acceso actulizado satisfactoriamente');
+=======
+<<<<<<< HEAD
+        return redirect()->route('index_acceso',$request->id)
+=======
+        return redirect()->route('accesos.index')
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+            ->with('success', 'Acceso actulizado satisfactoriamente');
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
     }
 
     /**
@@ -108,9 +122,41 @@ class AccesoController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
+        $acceso = Acceso::find($id);
+$mensaje = '';
+if($acceso->estado == 'Habilitado'){
+    $acceso->estado = 'Deshabilitado';
+    $mensaje = 'Acceso habilitado';
+}
+else{
+    $acceso->estado = 'Habilitado';
+    $mensaje = 'Aceso habilitado';
+
+}
+$acceso->save();
+
+return redirect()->route('accesos.index')
+    ->with('success', $mensaje);
+    }
+}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
         $acceso = Acceso::find($id)->delete();
 
         return redirect()->route('accesos.index')
             ->with('success', 'Acceso eliminado satisfatoriamente');
     }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e

@@ -31,10 +31,18 @@
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+<<<<<<< HEAD
                 <img src="<?php echo e(asset('inicio.png')); ?>" alt="constructora" width="150">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                 <img src="<?php echo e(asset('MENU.png')); ?>" alt="constructora" width="30">
+=======
+                    <?php echo e(config('app.name', 'constructora')); ?>
+
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
+                    <img src="<?php echo e(asset('logo-constructora.jpg')); ?>" alt="constructora" width="40">
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -119,7 +127,31 @@
                         <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+<<<<<<< HEAD
                                 : En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15">
+=======
+<<<<<<< HEAD
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
+=======
+<<<<<<< HEAD
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+=======
+<<<<<<< HEAD
+                                    En linea <img src="<?php echo e(asset('enlinea.png')); ?>" alt="constructora" width="15" align="left">
+=======
+                                    <?php echo e(Auth::user()->name); ?>: En linea
+>>>>>>> 2987c7eea6affb2b83de8295ce556516b7c3ad24
+>>>>>>> de9411025092ca657ae6a96fc0fec5e39644f890
+>>>>>>> 400b0a57c4ea5e362a31b7ef52293e8df8adc7bf
+>>>>>>> d030ea51c7a277a91de4a10625f09008a194c681
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

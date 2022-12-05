@@ -2654,7 +2654,7 @@ td
 <td colspan=3 class=x112>FIRMA</td>
 <td class=x72></td>
 <td class=x74>FECHA</td>
-<td class=x75></td>
+<td class=x75><script type="text/JavaScript"> var f = new Date(); document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()); </script></td>
  </tr>
  <tr height=20 class=x26 style='mso-height-source:userset;height:15pt' id='r33'>
 <td height=20 class=x26 style='height:15pt;'></td>

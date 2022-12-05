@@ -20,6 +20,10 @@ class Form110Controller extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
         if (Auth::user()->rol==="Administrador") {
             $form110s = Form110::paginate();
 
@@ -28,12 +32,21 @@ class Form110Controller extends Controller
         }
         else{
             $usuario = Auth::id();
+=======
+        $usuario = Auth::id();
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
         $form110s = Form110::where('user_id',$usuario)->paginate();
 
         return view('form110.index', compact('form110s'))
             ->with('i', (request()->input('page', 1) - 1) * $form110s->perPage());
+<<<<<<< HEAD
 
         }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ddd0ed168aca60f519cb7397505fd5f4a6a8da4d
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
     }
 
     /**

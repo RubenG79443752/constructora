@@ -15,7 +15,11 @@ class PlanillaTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+<<<<<<< HEAD
         ->setPerPageAccepted([15, 25, 50, 100]);
+=======
+            ->setPerPageAccepted([15, 25, 50, 100]);
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
     }
 
     public function columns(): array

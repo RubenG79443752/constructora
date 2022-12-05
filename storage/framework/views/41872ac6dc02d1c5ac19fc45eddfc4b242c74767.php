@@ -4,10 +4,16 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header bg-white mx-auto d-block">
+<<<<<<< HEAD
                 <img src="<?php echo e(asset('logo-constructora.png')); ?>" alt="Constructora" width="150" >
                     <td>
                         <h4><?php echo e(__('INICIAR SESION')); ?></h4>
                     </td>
+=======
+                    <img src="<?php echo e(asset('logo-constructora.jpg')); ?>" alt="Constructora" width="100">
+                    <?php echo e(__('Ingrese credenciales para acceder al sistema')); ?>
+
+>>>>>>> 06922fc0224a1f4dd5fb1d040b387825a943b30e
                 </div>
 
                 <div class="card-body">
